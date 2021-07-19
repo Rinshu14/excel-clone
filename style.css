@@ -1,0 +1,163 @@
+*{
+    box-sizing: border-box;
+}
+body
+{
+  margin: 0;
+}
+.conatiner
+{
+    height: 100vh;
+    width: 100vw;
+}
+.title-section
+{
+    height:4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    outline: none;
+    background-color:#2980b9;
+    z-index: 10;
+}
+.menu-bar-section
+{
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    
+}
+.menu-bar-section div
+{
+    margin-left: 15px;
+}
+.menu-options-section
+{
+    height: 8vh;
+    font-size: 2rem;
+    background-color:#2980b9;
+}
+.selected-cell-div
+{
+    width: 30%;
+    font-size: 2rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.formula-input-section
+{
+    width: 70%;
+    font-size: 2rem;
+    display: block;
+    outline: none;
+    border:none;
+    
+}
+.formula-section
+{
+    height:4vh;
+    display: flex;
+    
+   
+}
+.grid
+{
+    height: 76vh;
+    background-color:white;
+    overflow: auto;
+    position: relative;
+}
+.sheet-section
+{
+    height: 4vh;
+    background-color: blueviolet;
+}
+.blank-corner
+{
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    top:0;
+    left:0;
+    background-color:#8395a7;
+    position: sticky;
+    z-index: 10;
+}
+.row-number
+{
+    height: 30px;
+    width: 30px;
+    background-color: chartreuse;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#2980b9;
+    border: 0.5px solid gray;
+    /* z-index: -10; */
+}
+.column-tag-section
+{
+    height: 30px;
+    background-color: rgb(133, 98, 86);
+    position: fixed;
+    top:20vh;
+    left: 30px;
+    width: 5000px;
+    display: flex;
+    background-color:#2980b9;
+
+}
+.row-number-section
+{
+    display: inline-block;
+    position: absolute;
+    top:calc(  30px );
+    left:0;
+    /* z-index: -10; */
+}
+.column-number-section
+{
+    height: 30px;
+    width: 100px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.2px solid gray;
+    z-index: -10;
+}
+.cell-section
+{
+    height: calc( 76vh - 30px );
+   
+    width:calc( 100vw - 30px );
+  
+    /* background-color:black; */
+    position: absolute; /*because it will overlap with column-count and row-number; */
+    top:30px;
+    left:30px;
+    overflow: auto;
+}
+.cell
+{
+    height: 30px;
+    width: 100px;
+    border: 1px solid black;
+    flex-shrink: 0;
+    overflow: auto;
+    outline: none;
+}
+.row
+{
+    display: flex;
+}
+.cell-selected
+{
+    border: 1px solid red;
+
+}
