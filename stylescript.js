@@ -2,7 +2,8 @@ let allAlignmentOption = document.querySelectorAll(".align-cell-content span");
 let allColorOption = document.querySelectorAll(".cell-color-options span")
 let body = document.querySelector("body");
 let file = document.querySelector(".file");
-
+let title=document.querySelector(".title-section").innerText;
+console.log(title);
 let leftAlign = allAlignmentOption[0];
 let centerAlign = allAlignmentOption[1];
 let rightAlign = allAlignmentOption[2];
@@ -16,6 +17,7 @@ leftAlign.addEventListener("click", function () {
         lastCell.style.textAlign = "left";
         let Address = lastCell.getAttribute("data-address");
         dataObj[Address].align = "left";
+        console.log(dataObj[Address])
     }
 })
 centerAlign.addEventListener("click", function () {
@@ -66,19 +68,113 @@ fontColorPicker.addEventListener("click", function () {
 });
 file.addEventListener("click", function () {
     let isopen = file.getAttribute("isopen")
-    
+
     if (isopen == "false") {
-        
+
         let dropdown = document.createElement("div");
-        dropdown.innerHTML = `<div>SAve</div>
-        <div>clear</div>`;
+        dropdown.innerHTML = `<div>SAVE</div>
+        <div>CLEAR</div>`;
         dropdown.classList.add("file-dropdown");
         file.append(dropdown);
         file.setAttribute("isopen", "true");
-    }
-    else {
-        document.querySelector(".file-dropdown").remove();
-        file.setAttribute("isopen", "false");
-    }
+    
 
+let alloptions = dropdown.querySelectorAll("div");
+console.log(alloptions)
+let save = alloptions[0];
+let clear = alloptions[1];
+console.log(save);
+console.log(clear);
+save.addEventListener("click",function(){
+    localStorage.setItem(title,JSON.stringify(dataObj));
+})
+clear.addEventListener("click",function(){
+    localStorage.setItem(title,"");
+})}
+else {
+    document.querySelector(".file-dropdown").remove();
+    file.setAttribute("isopen", "false");
+}
+})
+
+let allfontstyle=document.querySelectorAll(".bold-italics-underline>span")
+
+let bold=allfontstyle[0];
+
+let italic=allfontstyle[1];
+let underline=allfontstyle[2];
+
+bold.addEventListener("click",function(){
+    if (lastCell) {
+        
+       
+        let address = lastCell.getAttribute("data-address");
+       
+        
+        if(dataObj[address].fontweight == "bold")
+        {
+            
+            dataObj[address].fontweight = "normal" 
+            lastCell.style.fontWeight ="normal";
+        }
+        else
+        {
+            dataObj[address].fontweight = "bold" 
+        lastCell.style.fontWeight ="bold";
+        }
+        
+    }   
+})
+italic.addEventListener("click",function(){
+    if (lastCell) {
+       
+
+
+        let address = lastCell.getAttribute("data-address");
+       
+        
+        if(dataObj[address].fontstyle == "italic")
+        {
+            
+            dataObj[address].fontstyle = "normal" 
+            lastCell.style.fontStyle ="normal";
+        }
+        else
+        {
+            dataObj[address].fontstyle = "italic" 
+        lastCell.style.fontStyle ="italic";
+        }
+
+
+
+        
+    }   
+})
+underline.addEventListener("click",function(){
+    if (lastCell) {
+        
+        let address = lastCell.getAttribute("data-address");
+       
+        
+        if(dataObj[address].textdecoration == "underline")
+        {
+            
+            dataObj[address].textdecoration = "none" 
+            lastCell.style.textDecoration ="none";
+        }
+        else
+        {
+            dataObj[address].textdecoration = "underline" 
+        lastCell.style.textDecoration ="underline";
+        }
+
+ 
+        
+        
+        
+        
+        // lastCell.style.textDecoration ="underline";
+        // let address = lastCell.getAttribute("data-address");
+        // dataObj[address].underline = "underline";
+    }   
 })

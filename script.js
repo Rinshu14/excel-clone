@@ -27,13 +27,13 @@ formulaInput.addEventListener("keydown", function (e) {
             for (let i = 0; i < splitedFormula.length; i++) {
                 if (splitedFormula[i] != '+' && splitedFormula[i] != '*' && splitedFormula[i] != '/' && splitedFormula[i] != '-' && isNaN(splitedFormula[i])) {
                     cellObj.upstream.push(splitedFormula[i]);
-                    addToDownstream(splitedFormula[i],selectedCellAddress);
+                    addToDownstream(splitedFormula[i], selectedCellAddress);
                 }
             }
-           updateCell(selectedCellAddress);
+            updateCell(selectedCellAddress);
 
-            
-           console.log(cellObj);
+
+            console.log(cellObj);
 
 
 
@@ -123,7 +123,17 @@ for (let i = 1; i <= 100; i++) {
     }
     cellSection.append(rowDiv);
 }
-
+//loadimg again sheet from local storage
+if (localStorage.getItem("sheet"))//if my sheet exist and not empty
+{
+    dataObj = JSON.parse(localStorage.getItem("sheet"));
+    for (let x in dataObj) {
+        let cell = document.querySelector(`[data-address=${x}]`);
+        if (dataObj[x].value != undefined) {
+            cell.innerText = dataObj[x].value;
+        }
+    }
+}
 function removeFromDownstream(parentCell, childCell) {   //parent cell is member of upstream 
     //childcell is that cell which have to be deleted 
     let parentDownStream = dataObj[parentCell].downstream;
@@ -178,5 +188,6 @@ function updateCell(cell) {
 //add in downstream add chaid in parent downstream
 function addToDownstream(parent, child) {
     dataObj[parent].downstream.push(child);
-  
+
 }
+
